@@ -3,6 +3,7 @@
     <meta charset="utf-8"/>
     <title>ECDSA Exchange</title>
     <script type="module" src="index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <div class="components">
@@ -18,10 +19,33 @@
         <h1> Send Amount </h1>
         <input type="text" id="send-amount" placeholder="Send Amount" />
         <input type="text" id="recipient" placeholder="Recipient" />
-        <div class="button" id="transfer-amount">
+        <div class="button" id="init-transfer">
           Transfer Amount
         </div>
       </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Signature Request</h2>
+        <p>Please sign the following message</p>
+        <p><span class="consolas" id="message_json"></span></p>
+        <p>with the <span class="consolas"><a href="sign-tx-code.html" target="_blank">sign-tx</a></span> utility using your private key and enter the resulting signature below.</p>
+        <pre>
+          <samp>
+            $ node sign-tx {your-private-key} '{"recipient":"0x....","amount":"X"}'
+          </samp>
+        </pre>
+        <p></p>
+        <input type="text" id="signature" placeholder="Signature" />
+        <div class="button" id="transfer-amount">Approve Transfer</div>
+        <span id="error-message">INVALID SIGNATURE</span>
+      </div>
+
     </div>
   </body>
 </html>
